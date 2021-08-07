@@ -1,0 +1,60 @@
+html {
+  /* background-color: #883bdb; */
+}
+
+body {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  margin: 0;
+}
+
+aside {
+  position: relative;
+  background-color: #ac74ed;
+  width: 20%;
+  height: 100vh;
+}
+
+img {
+  height: 9rem;
+  width: 9rem;
+}
+
+.content-container {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  background-color: #883bdb;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  width: 100%;
+}
+
+.player-one-sidebar {
+  display: inline-block;
+  margin-right: 5rem;
+}
+
+.game-display {
+  width: 60%;
+}
+
+.player-two-sidebar {
+  display: inline-block;
+  margin-left: 5rem;
+}
+
+button {
+  /* background-image: no-repeat transparent; */
+  background: none;
+  height: 10rem;
+  width: 10rem;
+  margin: 1rem;
+  border: 1px solid yellow;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en" dir="ltr">
   <head>
-    <script src="main.js"></script>
-    <script rel="stylesheet" href="styles.css"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>Rock, Paper, Scissors</title>
   </head>
   <body>
-    <section class="playerOneSidebar">
-    </section>
-    <main class="gameDisplay">
-    </main>
-    <section class="playerTwoSidebar">
+    <section class="content-container">
+      <aside class="player-one-sidebar">
+        <button class="test-button"></button>
+      </aside>
+      <main class="game-display">
+        <header>
+          <h2 class="title">Rock, Paper, Scissors!</h2>
+          <h3 class="subheader">Choose your fighter!</h3>
+        </header>
+        <section class="fighter-selection">
+          <button class="fighter rock"><img src="./assets/happy-rocks.png"></button>
+          <button class="fighter paper"><img src="./assets/happy-paper.png"></button>
+          <button class="fighter scissors"><img src="./assets/happy-scissors.png"></button>
+          <button class="fighter cave"><img src="./assets/cave.png"></button>
+          <button class="fighter alien"><img src="./assets/lines-alien.png"></button>
+          <!-- <img src="./assets/happy-rocks.png" class="fighter">
+          <img src="./assets/happy-paper.png" class="fighter">
+          <img src="./assets/happy-scissors.png" class="fighter">
+          <img src="./assets/cave.png" class="fighter hidden">
+          <img src="./assets/lines-alien.png" class="fighter hidden"> -->
+        </section>
+      </main>
+      <aside class="player-two-sidebar">
+      </aside>
+      <!-- <script src="main.js"></script> -->
     </section>
   </body>
 </html>
