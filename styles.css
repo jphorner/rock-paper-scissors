@@ -1,11 +1,12 @@
 html {
-  /* background-color: #883bdb; */
+
 }
 
 body {
   display: flex;
   position: relative;
   flex-direction: row;
+  font-family: Helvetica;
   margin: 0;
 }
 
@@ -21,6 +22,57 @@ img {
   width: 9rem;
 }
 
+header {
+  top: 0;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 4rem;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  padding: 0px;
+  align-items: center;
+}
+
+h2 {
+  font-weight: 300;
+  margin: 0px;
+}
+
+h3 {
+  margin-top: 0px;
+}
+
+button {
+  background: none;
+  height: 11rem;
+  width: 11rem;
+  margin: 1rem;
+  border: 0px;
+  border-radius: 1rem;
+  transition-duration: .1s;
+}
+
+button:hover {
+  border: 2px solid white;
+  background-color: #ac74ed;
+}
+
+button:active {
+  border: 3px solid yellow;
+  background: rgb(235,24,204);
+  background: linear-gradient(42deg, rgba(235,24,204,1) 8%, rgba(188,24,222,1) 21%, rgba(153,24,235,1) 36%, rgba(75,191,237,1) 57%, rgba(75,237,169,1) 69%, rgba(75,237,188,1) 78%, rgba(246,255,191,1) 93%);
+}
+
+
 .content-container {
   display: flex;
   position: relative;
@@ -32,27 +84,58 @@ img {
   width: 100%;
 }
 
+.player-one-sidebar,
+.player-two-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 3rem;
+}
+
 .player-one-sidebar {
-  display: inline-block;
   margin-right: 5rem;
 }
 
-.game-display {
-  width: 60%;
-}
-
 .player-two-sidebar {
-  display: inline-block;
   margin-left: 5rem;
 }
 
-button {
-  /* background-image: no-repeat transparent; */
-  background: none;
-  height: 10rem;
-  width: 10rem;
-  margin: 1rem;
-  border: 1px solid yellow;
+.game-display {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin-top: 0rem;
+  margin-bottom: 5rem;
+}
+
+.title-container {
+  display: flex;
+  position: static;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+}
+
+.fighter-selection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.bonus-fighters {
+  display: flex;
+  flex-direction: row;
+}
+
+.player-two-sidebar {
+  position: static;
+  margin-left: 5rem;
 }
 
 .hidden {

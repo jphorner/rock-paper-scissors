@@ -3,33 +3,37 @@
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" type="text/css" href="styles.css"></link>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> -->
     <title>Rock, Paper, Scissors</title>
   </head>
   <body>
     <section class="content-container">
       <aside class="player-one-sidebar">
-        <button class="test-button"></button>
+        <h1><img src="./assets/flat-lizard.png"></h1>
+        <h3>Human</h3>
       </aside>
       <main class="game-display">
         <header>
-          <h2 class="title">Rock, Paper, Scissors!</h2>
-          <h3 class="subheader">Choose your fighter!</h3>
+          <div class="title-container">
+            <h1>Rock, Paper, Scissors!</h1>
+            <h2 class="subheader">Choose your fighter!</h2>
+          </div>
         </header>
         <section class="fighter-selection">
           <button class="fighter rock"><img src="./assets/happy-rocks.png"></button>
           <button class="fighter paper"><img src="./assets/happy-paper.png"></button>
           <button class="fighter scissors"><img src="./assets/happy-scissors.png"></button>
-          <button class="fighter cave"><img src="./assets/cave.png"></button>
-          <button class="fighter alien"><img src="./assets/lines-alien.png"></button>
-          <!-- <img src="./assets/happy-rocks.png" class="fighter">
-          <img src="./assets/happy-paper.png" class="fighter">
-          <img src="./assets/happy-scissors.png" class="fighter">
-          <img src="./assets/cave.png" class="fighter hidden">
-          <img src="./assets/lines-alien.png" class="fighter hidden"> -->
+        </section>
+        <section class="bonus-fighters">
+          <button class="fighter cave hidden"><img src="./assets/cave.png"></button>
+          <button class="fighter alien hidden"><img src="./assets/lines-alien.png"></button>
+        </section>
+        <section class="gameplay-area hidden">
         </section>
       </main>
       <aside class="player-two-sidebar">
+        <h1><img src="./assets/flat-alien.png"></h1>
+        <h3>Computer</h3>
       </aside>
       <!-- <script src="main.js"></script> -->
     </section>
