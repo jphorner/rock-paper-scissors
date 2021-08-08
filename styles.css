@@ -29,7 +29,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 4rem;
   margin-bottom: 4rem;
 }
 
@@ -43,12 +43,14 @@ h1 {
 }
 
 h2 {
-  font-weight: 300;
+  font-weight: lighter;
   margin: 0px;
+  /* font-style: italic; */
 }
 
 h3 {
   margin-top: 0px;
+  font-weight: lighter;
 }
 
 button {
@@ -58,7 +60,7 @@ button {
   margin: 1rem;
   border: 0px;
   border-radius: 1rem;
-  transition-duration: .1s;
+  transition-duration: .4s;
 }
 
 button:hover {
@@ -77,10 +79,10 @@ button:active {
   display: flex;
   position: relative;
   flex-direction: row;
-  background-color: #883bdb;
+  background-color: #8042d1;
   color: white;
   font-family: 'Montserrat', sans-serif;
-  margin: 0;
+  margin-top: 0px;
   width: 100%;
 }
 
@@ -95,6 +97,8 @@ button:active {
 
 .player-one-sidebar {
   margin-right: 5rem;
+  background: rgb(62,23,110);
+  background: linear-gradient(197deg, rgba(62,23,110,1) 39%, rgba(172,115,237,1) 39%);
 }
 
 .player-two-sidebar {
@@ -122,22 +126,74 @@ button:active {
 }
 
 .fighter-selection {
-  display: flex;
+  display: block;
   flex-direction: row;
+  position: static;
   align-items: center;
   justify-content: center;
+  margin-top: 26%;
 }
 
 .bonus-fighters {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  height: auto;
+  width: 100%;
+  margin-top: 1rem;
+  /* border: 3px solid black; */
+  border-radius: 0.5em;
+  /* background-color: #AB72EC; */
+  background: rgb(62,23,110);
+  background: linear-gradient(304deg, rgba(62,23,110,1) 0%, rgba(62,23,110,1) 41%, rgba(62,23,110,1) 45%, rgba(157,98,223,1) 45%, rgba(157,98,223,1) 48%, rgba(157,98,223,1) 49%, rgba(62,23,110,1) 49%, rgba(62,23,110,1) 49%, rgba(62,23,110,1) 51%, rgba(126,194,98,1) 51%);
+}
+
+.bonus-fighters > button {
+
+}
+
+.bonus-fighters > img {
+
+}
+
+
+.fighter-selection,
+.bonus-fighters {
+
+}
+
+.bonus-fighters > button:hover {
+  background-color: #9aef75;
+}
+
+.fight {
+  height: 5rem;
+  border: 2px solid white;
+  color: white;
+  background-color: #AB72EC;
+  font-weight: bolder;
+  margin-top: 2rem;
 }
 
 .player-two-sidebar {
   position: static;
   margin-left: 5rem;
+  background: rgb(62,23,110);
+  background: linear-gradient(163deg, rgba(62,23,110,1) 39%, rgba(172,115,237,1) 39%);
 }
+
+.vanish {
+  opacity: 25%;
+}
+
+/* .appear {
+  opacity: 100%;
+} */
 
 .hidden {
   display: none;
+}
+
+.static {
+  position: absolute;
 }
