@@ -4,6 +4,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="styles.css"></link>
     <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> -->
+    <script src="game.js"></script>
+    <script src="player.js"></script>
     <title>Rock, Paper, Scissors</title>
   </head>
   <body>
@@ -11,6 +13,9 @@
       <aside class="player-one-sidebar">
         <h1><img src="./assets/flat-lizard.png"></h1>
         <h3>HUMAN</h3>
+        <section class="player-one-stats">
+          Wins: <span class="player-one-wins">0</span>
+        </section>
       </aside>
       <main class="game-display">
         <header>
@@ -19,22 +24,33 @@
             <h2 class="subheader">Choose your fighter!</h2>
           </div>
         </header>
-        <section class="fighter-selection">
-          <button class="fighter rock" id="rock"><img src="./assets/happy-rocks.png" id="rock"></button>
-          <button class="fighter paper" id="paper"><img src="./assets/happy-paper.png" id="paper"></button>
-          <button class="fighter scissors" id="scissors"><img src="./assets/happy-scissors.png" id="scissors"></button>
-        </section>
-          <section class="bonus-fighters">
-            <button class="fighter cave" id="cave"><img src="./assets/cave.png" id="cave"></button>
-            <button class="fighter alien" id="alien"><img src="./assets/lines-alien.png" id="alien"></button>
+        <section class="gameplay-options">
+          <section class="fighter-selection">
+            <button class="fighter rock" id="rock"><img src="./assets/happy-rocks.png" id="rockImage"></button>
+            <button class="fighter paper" id="paper"><img src="./assets/happy-paper.png" id="paperImage"></button>
+            <button class="fighter scissors" id="scissors"><img src="./assets/happy-scissors.png" id="scissorsImage"></button>
           </section>
-        <section class="gameplay-area">
-          <button class="fight" id="fight"><h2>FIGHT!</h2></button>
+          <section class="bonus-fighters hidden">
+            <button class="fighter cave" id="cave"><img src="./assets/cave.png" id="caveImage"></button>
+            <button class="fighter alien" id="alien"><img src="./assets/lines-alien.png" id="alienImage"></button>
+          </section>
+          <section class="gameplay-buttons">
+            <button class="fight" id="fight"><h2>FIGHT!</h2></button>
+            <button class="hard-mode" id="hardMode"><h2>HARD MODE</h2></button>
+            <button class="normal-mode hidden" id="normalMode"><h2>NORMAL MODE</h2></button>
+          </section>
         </section>
+        <section class="game-results hidden">
+          <span class="p1-option"></span> <span class="p2-option"></span>
+        </section>
+        <button class="play-again hidden"><h2>PLAY AGAIN</h2></button>
       </main>
       <aside class="player-two-sidebar">
         <h1><img src="./assets/flat-alien.png"></h1>
         <h3>COMPUTER</h3>
+        <section class="player-two-stats">
+          Wins: <span class="player-two-wins">0</span>
+        </section>
       </aside>
       <script src="main.js"></script>
     </section>

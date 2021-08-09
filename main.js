@@ -1,10 +1,9 @@
-// var Player = require('./Player.js');
-// var Game = require('./Game.js');
-
 //////  QUERY SELECTORS //////
 
 var sidebar1 = document.querySelector('.player-one-sidebar');
 var sidebar2 = document.querySelector('.player-two-sidebar');
+var player1WinArea = document.querySelector('.player-one-wins');
+var player2WinArea = document.querySelector('.player-two-wins');
 var titleContainer = document.querySelector('.title-container');
 var gameTitle = document.querySelector('.title');
 var fighterSelection = document.querySelector('.fighter-selection');
@@ -15,8 +14,16 @@ var paper = document.querySelector('.paper');
 var scissors = document.querySelector('.scissors');
 var cave = document.querySelector('.cave');
 var alien = document.querySelector('.alien');
-var gamePlayArea = document.querySelector('.gameplay-area');
 var fight = document.querySelector('.fight');
+var hardMode = document.querySelector('.hard-mode');
+var normalMode = document.querySelector('.normal-mode');
+var gameplayButtons = document.querySelector('.gameplay-buttons');
+var gameplayOptions = document.querySelector('.gameplay-options');
+var gameResults = document.querySelector('.game-results');
+var replayButton = document.querySelector('.play-again');
+var rockImage = document.querySelector('#rockImage');
+var player1Option = document.querySelector('.p1-option');
+var player2Option = document.querySelector('.p2-option');
 
 //////  GLOBAL VARIABLES  //////
 
@@ -24,65 +31,82 @@ var fighters = [ rock, paper, scissors ];
 var bonusFighters = [ cave, alien ];
 var currentFighter;
 var enemyFighter;
+var newGame;
+var player1Wins = 0;
+var player2Wins = 0;
+var fighterSelected = false;
 
 //////  EVENT LISTENERS  //////
 
 fighterSelection.addEventListener('click', selectFighter);
 bonusSelection.addEventListener('click', selectFighter);
 fight.addEventListener('click', startFight);
+hardMode.addEventListener('click', displayBonusFighters);
+normalMode.addEventListener('click', displayBonusFighters);
+replayButton.addEventListener('click', playAgain);
 
 //////  MAIN FUNCTIONS  //////
 
 
 function selectFighter(event) {
+  console.log(event.target.id)
   if (event.target.id) {
-    if (event.target.id === 'rock') {
+    fighterSelected = true;
+    if (event.target.id === 'rockImage') {
       appear(rock);
       disappear(paper);
       disappear(scissors);
-      currentFighter = rock.id;
-    } else if (event.target.id === 'paper') {
+      currentFighter = rock;
+    } else if (event.target.id === 'paperImage') {
       appear(paper);
       disappear(rock);
       disappear(scissors);
-      currentFighter = paper.id;
-    } else if (event.target.id === 'scissors') {
+      currentFighter = paper;
+    } else if (event.target.id === 'scissorsImage') {
       appear(scissors);
       disappear(paper);
       disappear(rock);
-      currentFighter = scissors.id;
-    } else if (event.target.id === 'cave') {
+      currentFighter = scissors;
+    } else if (event.target.id === 'caveImage') {
       appear(cave);
       disappear(alien);
-    } else if (event.target.id === 'alien') {
+    } else if (event.target.id === 'alienImage') {
       appear(alien);
       disappear(cave);
     };
-    selectEnemyFighter();
   }
 }
 
-function selectEnemyFighter() {
-  enemyFighter = fighters[getRandomIndex(fighters)].id;
-  console.log(enemyFighter);
+function displayBonusFighters() {
+  bonusSelection.classList.toggle('hidden');
+  hardMode.classList.toggle('hidden');
+  normalMode.classList.toggle('hidden');
 }
 
 function startFight() {
-  if (currentFighter === enemyFighter) {
-    console.log('DRAW');
-  } else if (currentFighter === 'rock' && enemyFighter === 'scissors') {
-    console.log('Human (rock) beats CPU (scissors)');
-  } else if (currentFighter === 'rock' && enemyFighter === 'paper') {
-    console.log('CPU (paper) beats Human (rock)');
-  } else if (currentFighter === 'paper' && enemyFighter === 'rock') {
-    console.log ('Human (paper) beats CPU (rock)');
-  } else if (currentFighter === 'paper' && enemyFighter === 'scissors') {
-    console.log('CPU (scissors) beats Human (paper)');
-  } else if (currentFighter === 'scissors' && enemyFighter === 'paper') {
-    console.log('Human (scissors) beats CPU (paper)');
-  } else if (currentFighter === 'scissors' && enemyFighter === 'rock') {
-    console.log('CPU (rock) beats Human (scissors)');
+  if (fighterSelected === true) {
+    hide(gameplayOptions);
+    show(gameResults);
+    show(replayButton);
+    var player1 = new Player('Human', 'Human', 0);
+    var player2 = new Player('CPU', 'CPU', 0);
+    newGame = new Game(player1, player2, 'Standard');
+    player1.takeTurn();
+    player2.selectEnemyFighter();
+    newGame.checkWinState();
   }
+}
+
+function playAgain() {
+  hide(gameResults);
+  hide(replayButton);
+  show(gameplayOptions);
+  fighterSelected = false;
+  for (var i = 0; i < fighters.length; i++) {
+    fighters[i].classList.remove('vanish');
+  };
+  currentFighter = null;
+  enemyFighter = null;
 }
 
 //////  RANDOM NUMBER SELECTOR  //////
