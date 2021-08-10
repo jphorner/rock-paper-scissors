@@ -35,11 +35,12 @@ var newGame;
 var player1Wins = 0;
 var player2Wins = 0;
 var fighterSelected = false;
+var bonusFighterSelected = false;
 
 //////  EVENT LISTENERS  //////
 
 fighterSelection.addEventListener('click', selectFighter);
-bonusSelection.addEventListener('click', selectFighter);
+bonusSelection.addEventListener('click', selectBonusFighter);
 fight.addEventListener('click', startFight);
 hardMode.addEventListener('click', displayBonusFighters);
 normalMode.addEventListener('click', displayBonusFighters);
@@ -83,8 +84,15 @@ function displayBonusFighters() {
   normalMode.classList.toggle('hidden');
 }
 
+function selectBonusFighter() {
+  bonusFighterSelected = true;
+
+}
+
 function startFight() {
-  if (fighterSelected === true) {
+  if (fighterSelected && bonusFighterSelected) {
+
+  } else if (fighterSelected && bonusFighterSelected === false) {
     hide(gameplayOptions);
     show(gameResults);
     show(replayButton);

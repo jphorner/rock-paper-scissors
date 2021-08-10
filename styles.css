@@ -179,6 +179,12 @@ button:active {
   margin-top: 2rem;
 }
 
+.fight:hover,
+.normal-mode:hover,
+.play-again:hover {
+  background-color: #551f96;
+}
+
 .gameplay-buttons,
 .game-results {
   display: flex;
@@ -188,6 +194,19 @@ button:active {
 
 .game-results {
   justify-content: space-between;
+  align-items: flex-end;
+  background-color: #AB72EC;
+  border: 2rem;
+  border-radius: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+}
+
+.vs-image {
+  height: 11rem;
+  width: 11rem;
+  margin: 0 2rem 0 2rem;
 }
 
 .hard-mode {
@@ -195,7 +214,7 @@ button:active {
 }
 
 .hard-mode:hover {
-  background-color: #e84c4c;
+  background-color: #d83a3a;
 }
 
 .player-two-sidebar {

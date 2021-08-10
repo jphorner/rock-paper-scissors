@@ -29,6 +29,7 @@ class Game {
     }
     this.countWins();
     this.displayResults();
+    this.resetBoard();
   }
 
   countWins() {
@@ -46,7 +47,7 @@ class Game {
   }
 
   resetBoard() {
-    console.log('true')
+    setTimeout(playAgain, 4000);
   }
 }
 
