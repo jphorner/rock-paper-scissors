@@ -24,26 +24,34 @@ var replayButton = document.querySelector('.play-again');
 var rockImage = document.querySelector('#rockImage');
 var player1Option = document.querySelector('.p1-option');
 var player2Option = document.querySelector('.p2-option');
+var winnerText = document.querySelector('.winner-text');
+var bonusInfo = document.querySelector('.bonus-information');
 
 //////  GLOBAL VARIABLES  //////
 
 var fighters = [ rock, paper, scissors ];
 var bonusFighters = [ cave, alien ];
 var currentFighter;
+var bonusFighter;
 var enemyFighter;
 var newGame;
+var currentWinner;
 var player1Wins = 0;
 var player2Wins = 0;
+var savedWins;
 var fighterSelected = false;
 var bonusFighterSelected = false;
+var isSafe = false;
+var safetyStates = [ true, false ];
 
 //////  EVENT LISTENERS  //////
 
+document.addEventListener('load', populateWins);
 fighterSelection.addEventListener('click', selectFighter);
 bonusSelection.addEventListener('click', selectBonusFighter);
 fight.addEventListener('click', startFight);
 hardMode.addEventListener('click', displayBonusFighters);
-normalMode.addEventListener('click', displayBonusFighters);
+normalMode.addEventListener('click', removeBonusSelection);
 replayButton.addEventListener('click', playAgain);
 
 //////  MAIN FUNCTIONS  //////
@@ -68,13 +76,7 @@ function selectFighter(event) {
       disappear(paper);
       disappear(rock);
       currentFighter = scissors;
-    } else if (event.target.id === 'caveImage') {
-      appear(cave);
-      disappear(alien);
-    } else if (event.target.id === 'alienImage') {
-      appear(alien);
-      disappear(cave);
-    };
+    }
   }
 }
 
@@ -84,37 +86,76 @@ function displayBonusFighters() {
   normalMode.classList.toggle('hidden');
 }
 
-function selectBonusFighter() {
+function selectBonusFighter(event) {
   bonusFighterSelected = true;
+  if (event.target.id === 'caveImage') {
+    appear(cave);
+    disappear(alien);
+    bonusFighter = cave.id;
+  } else if (event.target.id === 'alienImage') {
+    appear(alien);
+    disappear(cave);
+    bonusFighter = alien.id;
+  };
+}
 
+function removeBonusSelection() {
+  bonusFighterSelected = false;
+  displayBonusFighters();
 }
 
 function startFight() {
   if (fighterSelected && bonusFighterSelected) {
-
+    playHardModeRound();
   } else if (fighterSelected && bonusFighterSelected === false) {
-    hide(gameplayOptions);
-    show(gameResults);
-    show(replayButton);
-    var player1 = new Player('Human', 'Human', 0);
-    var player2 = new Player('CPU', 'CPU', 0);
-    newGame = new Game(player1, player2, 'Standard');
-    player1.takeTurn();
-    player2.selectEnemyFighter();
-    newGame.checkWinState();
+    playNormalRound();
   }
+}
+
+function playNormalRound() {
+  hide(gameplayOptions);
+  show(gameResults);
+  var player1 = new Player('Human', 'Human', 0);
+  var player2 = new Player('CPU', 'CPU', 0);
+  newGame = new Game(player1, player2, 'Standard');
+  player1.takeTurn();
+  player2.selectEnemyFighter();
+  newGame.checkWinState();
+}
+
+function playHardModeRound() {
+  hide(gameplayOptions);
+  show(gameResults);
+  var player1 = new Player('Human', 'Human', 0);
+  var player2 = new Player('CPU', 'CPU', 0);
+  newGame = new Game(player1, player2, 'Hard Mode');
+  player1.takeTurn();
+  player2.selectEnemyFighter();
+  newGame.checkWinState();
+  // newGame.checkHardMode();
 }
 
 function playAgain() {
   hide(gameResults);
   hide(replayButton);
   show(gameplayOptions);
+  hide(bonusInfo);
   fighterSelected = false;
   for (var i = 0; i < fighters.length; i++) {
     fighters[i].classList.remove('vanish');
   };
   currentFighter = null;
   enemyFighter = null;
+  currentWinner = null;
+  bonusFighter = null;
+  bonusInfo.innerText = null;
+  hide(winnerText);
+}
+
+function populateWins() {
+  var retrievedWins = localStorage.getItem('storedWins');
+  var parsedWins = JSON.parse(retrievedWins);
+  savedWins = parsedWins;
 }
 
 //////  RANDOM NUMBER SELECTOR  //////

@@ -57,7 +57,7 @@ button {
   background: none;
   height: 10rem;
   width: 11rem;
-  margin: 1rem;
+  margin: .5rem;
   border: 0px;
   border-radius: 1rem;
   transition-duration: .4s;
@@ -126,6 +126,12 @@ button:active {
   height: 10%;
 }
 
+/* .title {
+  display: block;
+  justify-content: center;
+  align-items: center;
+} */
+
 .fighter-selection {
   display: block;
   flex-direction: row;
@@ -133,6 +139,7 @@ button:active {
   align-items: center;
   justify-content: center;
   margin-top: 26%;
+  margin-bottom: 5%;
 }
 
 .bonus-fighters {
@@ -207,6 +214,21 @@ button:active {
   height: 11rem;
   width: 11rem;
   margin: 0 2rem 0 2rem;
+}
+
+.winner-text {
+  margin: 1rem;
+  font-weight: bolder;
+}
+
+.bonus-information {
+  height: auto;
+  width: auto;
+  margin-top: 2rem;
+  font-weight: bolder;
+  background-color: #3E186E;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 .hard-mode {
