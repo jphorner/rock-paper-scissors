@@ -46,8 +46,6 @@ class Game {
   checkHardMode() {
     show(bonusInfo);
     this.displayResults();
-    console.log('P1 BF: ' + player1.bonusFighter);
-    console.log('P2 BF: ' + player2.bonusFighter);
     if (this.player1.bonusFighter === 'cave' && this.player2.bonusFighter === 'cave') {
       bonusInfo.innerText = 'Both players hid in the cave! FIGHT!';
       return;

@@ -85,6 +85,7 @@ button:active {
   color: white;
   font-family: 'Montserrat', sans-serif;
   margin-top: 0px;
+  border-bottom: 5rem;
   width: 100%;
 }
 

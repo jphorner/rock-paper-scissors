@@ -62,7 +62,6 @@ helpButton.addEventListener('click', showHelp);
 
 
 function selectFighter(event) {
-  console.log(event.target.id)
   if (event.target.id) {
     fighterSelected = true;
     if (event.target.id === 'rockImage') {
