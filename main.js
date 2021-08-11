@@ -26,6 +26,9 @@ var player1Option = document.querySelector('.p1-option');
 var player2Option = document.querySelector('.p2-option');
 var winnerText = document.querySelector('.winner-text');
 var bonusInfo = document.querySelector('.bonus-information');
+var resetButton = document.querySelector('.reset-button');
+var gameExplanation = document.querySelector('.game-explanation');
+var helpButton = document.querySelector('.help-button');
 
 //////  GLOBAL VARIABLES  //////
 
@@ -36,23 +39,24 @@ var bonusFighter;
 var enemyFighter;
 var newGame;
 var currentWinner;
-var player1Wins = 0;
-var player2Wins = 0;
-var savedWins;
+var isSafe = false;
 var fighterSelected = false;
 var bonusFighterSelected = false;
-var isSafe = false;
 var safetyStates = [ true, false ];
+var player1 = new Player('Human', 'Human', 0);
+var player2 = new Player('CPU', 'CPU', 0);
 
 //////  EVENT LISTENERS  //////
 
-document.addEventListener('load', populateWins);
+window.addEventListener('load', populateWins);
 fighterSelection.addEventListener('click', selectFighter);
 bonusSelection.addEventListener('click', selectBonusFighter);
 fight.addEventListener('click', startFight);
 hardMode.addEventListener('click', displayBonusFighters);
 normalMode.addEventListener('click', removeBonusSelection);
 replayButton.addEventListener('click', playAgain);
+resetButton.addEventListener('click', resetWins);
+helpButton.addEventListener('click', showHelp);
 
 //////  MAIN FUNCTIONS  //////
 
@@ -84,6 +88,7 @@ function displayBonusFighters() {
   bonusSelection.classList.toggle('hidden');
   hardMode.classList.toggle('hidden');
   normalMode.classList.toggle('hidden');
+  titleContainer.classList.toggle('space');
 }
 
 function selectBonusFighter(event) {
@@ -91,11 +96,11 @@ function selectBonusFighter(event) {
   if (event.target.id === 'caveImage') {
     appear(cave);
     disappear(alien);
-    bonusFighter = cave.id;
+    player1.bonusFighter = cave.id;
   } else if (event.target.id === 'alienImage') {
     appear(alien);
     disappear(cave);
-    bonusFighter = alien.id;
+    player1.bonusFighter = alien.id;
   };
 }
 
@@ -107,7 +112,7 @@ function removeBonusSelection() {
 function startFight() {
   if (fighterSelected && bonusFighterSelected) {
     playHardModeRound();
-  } else if (fighterSelected && bonusFighterSelected === false) {
+  } else if (fighterSelected) {
     playNormalRound();
   }
 }
@@ -115,8 +120,6 @@ function startFight() {
 function playNormalRound() {
   hide(gameplayOptions);
   show(gameResults);
-  var player1 = new Player('Human', 'Human', 0);
-  var player2 = new Player('CPU', 'CPU', 0);
   newGame = new Game(player1, player2, 'Standard');
   player1.takeTurn();
   player2.selectEnemyFighter();
@@ -126,13 +129,10 @@ function playNormalRound() {
 function playHardModeRound() {
   hide(gameplayOptions);
   show(gameResults);
-  var player1 = new Player('Human', 'Human', 0);
-  var player2 = new Player('CPU', 'CPU', 0);
   newGame = new Game(player1, player2, 'Hard Mode');
   player1.takeTurn();
   player2.selectEnemyFighter();
   newGame.checkWinState();
-  // newGame.checkHardMode();
 }
 
 function playAgain() {
@@ -144,18 +144,35 @@ function playAgain() {
   for (var i = 0; i < fighters.length; i++) {
     fighters[i].classList.remove('vanish');
   };
+  for (var i = 0; i < bonusFighters.length; i++) {
+    bonusFighters[i].classList.remove('vanish');
+  }
+  hide(winnerText);
+  resetKeyStats();
+}
+
+function resetKeyStats() {
   currentFighter = null;
   enemyFighter = null;
   currentWinner = null;
   bonusFighter = null;
   bonusInfo.innerText = null;
-  hide(winnerText);
 }
 
-function populateWins() {
-  var retrievedWins = localStorage.getItem('storedWins');
-  var parsedWins = JSON.parse(retrievedWins);
-  savedWins = parsedWins;
+function populateWins(event) {
+  player1.retrieveWinsFromStorage();
+}
+
+function resetWins() {
+  localStorage.clear();
+  player1.wins = 0;
+  player2.wins = 0;
+  player1WinArea.innerText = 0;
+  player2WinArea.innerText = 0;
+}
+
+function showHelp() {
+  gameExplanation.classList.toggle('obscure');
 }
 
 //////  RANDOM NUMBER SELECTOR  //////

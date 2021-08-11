@@ -9,7 +9,7 @@ class Player {
   }
 
   saveWinsToStorage() {
-    var winsToStore = { p1Wins: player1Wins, p2Wins: player2Wins };
+    var winsToStore = { p1Wins: this.wins, p2Wins: player2.wins };
     var stringifiedWins = JSON.stringify(winsToStore);
     localStorage.setItem('storedWins', stringifiedWins);
   }
@@ -17,7 +17,10 @@ class Player {
   retrieveWinsFromStorage() {
     var retrievedWins = localStorage.getItem('storedWins');
     var parsedWins = JSON.parse(retrievedWins);
-    savedWins = parsedWins;
+    player1.wins = parsedWins.p1Wins;
+    player2.wins = parsedWins.p2Wins;
+    player1WinArea.innerText = parsedWins.p1Wins;
+    player2WinArea.innerText = parsedWins.p2Wins;
   }
 
   takeTurn() {
@@ -30,12 +33,11 @@ class Player {
     if (this.isSafe) {
       bonusInfo.innerText = `The cave protected the ${this.name}!`
     } else if (this.isSafe === false) {
-      bonusInfo.innerText = `The cave was too obvious to protect the ${this.name}!`
+      bonusInfo.innerText = `The ${this.name} failed to hide in the cave!`
     }
   }
 
   selectEnemyFighter() {
-    // enemyFighter = this.fighter;
     this.fighter = fighters[getRandomIndex(fighters)];
     enemyFighter = this.fighter;
     this.fighter = this.fighter.id;
@@ -44,5 +46,3 @@ class Player {
     }
   }
 }
-
-// module.exports = Player;

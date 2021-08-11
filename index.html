@@ -16,6 +16,19 @@
         <section class="player-one-stats">
           Wins: <span class="player-one-wins">0</span>
         </section>
+        <article class="game-explanation obscure">
+          To play, select your fighter and click the Fight button.
+          The game will automatically reset after each round.
+          <br><br>
+          Selecting Hard Mode will display two bonus fighters, Cave and Alien.
+          <br><br>
+          <b>Cave</b> will give your fighter a 50% chance to remain safe during the round. You can still win if you are safe.
+          <br><br>
+          <b>Alien</b> will reward you double points for winning.
+        </article>
+        <section class="help">
+          <button class="help-button">HELP</button>
+        </section>
       </aside>
       <main class="game-display">
         <header>
@@ -43,8 +56,9 @@
         <section class="game-results hidden">
           <span class="p1-option"></span> <img class="vs-image" src="./assets/versus_sign.png"> <span class="p2-option"></span>
         </section>
-        <div class="winner-text hidden"><h1></h1></div>
         <section class="bonus-information hidden"></section>
+        <div class="winner-text hidden"><h1></h1></div>
+
         <button class="play-again hidden"><h2>PLAY AGAIN</h2></button>
       </main>
       <aside class="player-two-sidebar">
@@ -52,6 +66,9 @@
         <h3>COMPUTER</h3>
         <section class="player-two-stats">
           Wins: <span class="player-two-wins">0</span>
+        </section>
+        <section class="reset-wins">
+          <button class="reset-button">reset wins</button>
         </section>
       </aside>
       <script src="main.js"></script>
